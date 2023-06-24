@@ -1,0 +1,58 @@
+<nz-content>
+  <nz-breadcrumb>
+    <nz-breadcrumb-item>Informes</nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+      <a>Informes </a>
+    </nz-breadcrumb-item>
+  </nz-breadcrumb>
+  <nz-page-header
+        class="site-page-header"
+        nzBackIcon
+        nzTitle="Generardor de informes historicos"
+    >
+    </nz-page-header>
+
+    <div>
+        <form [formGroup]="formDate" (ngSubmit)="onSubmit()">
+            <nz-form-item>
+              <nz-form-control nzErrorTip="Fecha Inicial es requerida">
+                <nz-date-picker  formControlName="fechaInicio"  nzPlaceHolder="Fecha Inicial" nzFormat="YYYY-MM-dd"></nz-date-picker>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-control nzErrorTip="Fecha Final es requerida">
+                <nz-date-picker formControlName="fechaFinal" nzPlaceHolder="Fecha Final" nzFormat="YYYY-MM-dd"></nz-date-picker>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Debe Seleccionar un tipo de informe">
+                    <nz-select nzAllowClear nzPlaceHolder="Selecionar Informe" formControlName="informe" [nzCustomTemplate]="defaultTemplate">
+                        <nz-option nzLabel="Histórico Consumos por Cliente" nzValue="1"></nz-option>
+                        <nz-option nzLabel="Consumos por Cliente" nzValue="2"></nz-option>
+                        <nz-option nzLabel="Top 20 Peores Tramos/Cliente" nzValue="3"></nz-option>
+                    </nz-select>
+                    <ng-template #defaultTemplate let-selected>
+                    <span nz-icon [nzType]="selected.nzValue"></span>
+                        {{ selected.nzLabel }}  
+                    </ng-template>
+                </nz-form-control>
+            </nz-form-item>
+            <button nz-button nzType="primary">Generar Informe</button>
+          </form>
+    </div>
+    <div class="tabla-informe" *ngIf="data">
+      <nz-table #table [nzData]="data">
+        <thead>
+          <tr>
+            <th *ngFor="let column of columns" nz-th>{{ column.title }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of table.data">
+            <td *ngFor="let column of columns">{{ item[column.key] }}</td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+</nz-content>
+

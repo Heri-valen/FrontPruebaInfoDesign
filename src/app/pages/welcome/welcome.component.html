@@ -1,0 +1,48 @@
+<nz-content>
+
+    <nz-breadcrumb>
+        <nz-breadcrumb-item>Home</nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+          <a>Dashboard</a>
+        </nz-breadcrumb-item>
+    </nz-breadcrumb>
+
+
+    <div class="center">
+        <h3 nz-typography nzType="secondary">Prueba Tecnica</h3>
+
+        <nz-divider nzText=" Desarrollador FULLSTACK"></nz-divider>
+    </div>
+    <div nz-row class="center">
+        <div nz-col nzSpan="8">
+            <nz-card nzHoverable style="width:240px; border-radius:10px" [nzCover]="coverTemplate">
+                <nz-card-meta nzTitle="Heriberto Valencia" nzDescription="Desarrollado Senior"></nz-card-meta>
+              </nz-card>
+              <ng-template #coverTemplate>
+                <img alt="FotoHeribeto"  style="border-radius:10px" src="https://konkasa.com/wp-content/uploads/2023/06/fotoHeribertoValencia.png" />
+              </ng-template>
+        </div>
+        <div nz-col nzSpan="16">
+            <div class="no-center">
+                <p>Consideraciones para realizar la prueba: </p>
+                <p>El objetivo de la prueba es desarrollar un backend en NodeJS que permite obtener los datos en la base de datos por fechas, tramos y los organice. Sean libres de utilizar la vista allí creada. Y el frontend debe de ser realizado en Angular, para la presentación de los gráficos de históricos, datepickers y las tablas de la información, se puede usar cualquier librería. Se evaluará funcionalidad, estructura y estilos.   </p>
+                <ul>
+                    <li>Vista 1: Histórico Consumos por Tramos
+                        Se envía una fecha inicial y una final (yyyy-MM-dd) y se debe de responder con una historia por cada tramo, que contenga el consumo, perdidas y costo por el consumo. Esto permite dar una contextualización al cliente de cómo han estado los datos en ese periodo de tiempo.</li>
+                    <li>Vista 2: Histórico Consumos por Cliente (Residencial, Comercial, Industrial)
+                        Se envía una fecha inicial y una final (yyyy-MM-dd) y se debe de responder con una historia por cada tipo de usuario, que contenga el tramo, consumo, perdidas y costo por el consumo. Esta historia permite ver cual tramo genera mayores pérdidas para tomar decisiones.</li>
+                    <li>Vista 3: Top 20 Peores Tramos/Cliente
+                        Se envía una fecha inicial y una final (yyyy-MM-dd) y se debe de responder con un listado con los tramos/cliente con las mayores pérdidas. Este busca saber quién genera las mayores pérdidas y así planear un mantenimiento correctivo/preventivo, según sea el caso.</li>
+                </ul>
+            </div>
+        </div>
+      </div>
+      <div class="texto">
+        <span nz-typography><code>Para continuar con la prueba es necesario Descargar y ejecutar  el  <strong>SCRIPT</strong> del  procedimiento almacenado  ObtenerHistoricoConsumos.</code></span>  
+        <a nz-button nzType="primary" class="btn-descargar" href="./SP_ObtenerHistoricoConsumo.sql" download >
+            <span nz-icon nzType="download"></span>
+                Descargar SCRIPT 
+        </a>
+      </div>
+
+</nz-content> 
